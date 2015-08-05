@@ -1,28 +1,41 @@
+CompScore = 0
+YourScore = 0
+Ties = 0
+
+print "Let's play Rock Paper Scissors!"
+print "Choose either Rock, Paper, or Scissors!"
+
+user = str(raw_input())
+
+user = user.lower()
+
 def RPS(y):	
 	
 	import random
 
-	L = ["Rock", "Paper", "Scissors"]
+	L = ["rock", "paper", "scissors"]
 
 	a = random.choice(L)
 
-	print str(a)
+	global user 
+	global b
 
-	print "Let's play Rock Paper Scissors!"
-	print "Choose either Rock, Paper, or Scissors!"
-
-	user = raw_input()
-
-	print str(user)
 
 	def rps(x):
+	
+		global user 
 
-		CompScore = 0
-		YourScore = 0
-		Ties = 0
+		global CompScore
+		global YourScore
+		global Ties
 		
-		if user != "Rock" and user != "Paper" and user != "Scissors":
-			print "Sorry, I did not understand your input."
+		while user != "rock" and user != "paper" and user != "scissors":
+			print "Sorry, I did not understand your input. Try Again!"
+			user = raw_input()
+			user = user.lower()
+			
+		print "Computer picks: " + str(a)
+			
 		
 		if a == user:
 			print "It's a tie!"
@@ -30,27 +43,27 @@ def RPS(y):
 
 		else: 
 
-			if a == "Rock":
-				if user == "Paper":
+			if a == "rock":
+				if user == "paper":
 					print "You win!"
 					YourScore += 1
-				if user == "Scissors": 
+				if user == "scissors": 
 					print "Sorry, you lose!"
 					CompScore += 1
 
-			if a == "Paper":
-				if user == "Scissors":
+			if a == "paper":
+				if user == "scissors":
 					print "You win!"
 					YourScore += 1
-				if user == "Rock": 
+				if user == "rock": 
 					print "Sorry, you lose!"
 					CompScore += 1
 
-			if a == "Scissors":
-				if user == "Rock":
+			if a == "scissors":
+				if user == "rock":
 					print "You win!"
 					YourScore += 1
-				if user == "Paper": 
+				if user == "paper": 
 					print "Sorry, you lose!"
 					CompScore += 1
 			
@@ -61,15 +74,23 @@ def RPS(y):
 		print "Want to play again? Type Y for yes or N for no!"
 			
 		b = raw_input()
-		
-		print str(b)
+		b = b.lower()
 			
-		if b == "Y":
+		while b != "y" and b != "n":
+			print "Sorry, I did not understand your input. Try Again!"
+			b = raw_input()
+			b = b.lower()
+		
+		
+		if b == "y":
+			print "Let's play Rock Paper Scissors!"
+			print "Choose either Rock, Paper, or Scissors!"
+			user = raw_input()
+			user = user.lower()
 			return RPS(y)
-		if b == "N":
+		if b == "n":
 			print "Game Over."
-		else:
-			print "Sorry, I did not understand your input."
+
 				
 	rps(user)
 	
